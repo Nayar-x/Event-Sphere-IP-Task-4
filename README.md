@@ -1,5 +1,4 @@
-#<img width="636" height="636" alt="logo" src="https://github.com/user-attachments/assets/d94cf3e2-6070-4a0b-a03c-3ca7d5074337" />
- Event Sphere
+#Event Sphere
 
 Event Sphere is a modern, responsive web application to **discover and explore upcoming events** — from tech fests to concerts, expos, retreats, and hackathons.  
 It is built using **HTML, TailwindCSS, Alpine.js, and Particles.js** for a lightweight but feature-rich experience.
