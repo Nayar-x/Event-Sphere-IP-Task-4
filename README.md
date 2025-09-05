@@ -1,4 +1,4 @@
-#Event Sphere
+# Event Sphere
 
 Event Sphere is a modern, responsive web application to **discover and explore upcoming events** — from tech fests to concerts, expos, retreats, and hackathons.  
 It is built using **HTML, TailwindCSS, Alpine.js, and Particles.js** for a lightweight but feature-rich experience.
