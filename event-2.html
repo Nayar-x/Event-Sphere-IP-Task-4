@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Music Vibes Night — Event Sphere</title>
+  <meta name="description" content="Music Vibes Night — a live concert at Madison Square Garden with top global artists and DJs.">
+
+  <!-- Favicon / Logo -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.14.2/dist/cdn.min.js"></script>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Styles -->
+  <style>
+    :root { --accent:#e11d48; } /* concert vibe - pink/red */
+    html,body { font-family:'Inter',system-ui; }
+    .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.06); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+  <div class="min-h-screen flex flex-col">
+
+    <!-- NAV -->
+    <header class="w-full py-5 px-6 md:px-12 border-b border-[rgba(255,255,255,0.06)]">
+      <nav class="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="images/logo.png" alt="EventSphere logo" class="w-10 h-10 rounded-lg object-cover" />
+          <span class="font-semibold text-lg">Event Sphere</span>
+        </a>
+        <ul class="hidden md:flex items-center gap-6 text-sm">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="upcoming.html" class="hover:text-white">Upcoming Events</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative h-72 md:h-96 flex items-center justify-center bg-center bg-cover"
+      style="background-image:url('images/event-2-hero.jpg');">
+      <div class="absolute inset-0 bg-slate-900/70"></div>
+      <div class="relative text-center px-6">
+        <h1 class="text-4xl md:text-5xl font-extrabold animate__animated animate__fadeInDown">Music Vibes Night</h1>
+        <p class="mt-2 text-slate-300 animate__animated animate__fadeInUp">Madison Square Garden • Sep 25, 2025</p>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <main class="flex-1 max-w-5xl mx-auto px-6 md:px-12 py-12 space-y-12">
+      <!-- Description -->
+      <article>
+        <h2 class="text-2xl font-bold mb-4">About the Event</h2>
+        <p class="text-slate-300 leading-relaxed">
+          Music Vibes Night is a one-of-a-kind concert bringing together world-renowned artists and DJs for an unforgettable evening. Expect electrifying performances, immersive stage visuals, and an atmosphere that celebrates music in all its forms. Join thousands of fans at Madison Square Garden for the ultimate night of rhythm and energy.
+        </p>
+      </article>
+
+      <!-- Info -->
+      <section class="grid sm:grid-cols-2 gap-8">
+        <div class="glass rounded-xl p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-calendar-days text-pink-400 text-xl"></i>
+            <span>September 25, 2025 • 8:00 PM – Late</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-location-dot text-rose-400 text-xl"></i>
+            <span>Madison Square Garden, New York</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-music text-fuchsia-400 text-xl"></i>
+            <span>Featuring multiple international artists</span>
+          </div>
+          <button @click="open=true" class="mt-4 inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-lg hover:scale-[1.02] transition">
+            <i class="fa-solid fa-ticket"></i> Book Tickets
+          </button>
+        </div>
+
+        <!-- Map -->
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.8625934271297!2d-73.99565628459378!3d40.75050487932744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af18cb3bb5%3A0xc80b8f06e177fe62!2sMadison%20Square%20Garden!5e0!3m2!1sen!2sus!4v1694016400000!5m2!1sen!2sus"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-[rgba(255,255,255,0.06)] mt-auto">
+      <div class="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-slate-400">© <span id="year"></span> Event Sphere</div>
+        <div class="flex items-center gap-3">
+          <a class="text-slate-300 hover:text-white" href="https://www.snapchat.com/nayar-900" target="_blank" rel="noopener"><i class="fa-brands fa-snapchat"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://www.instagram.com/_._._nayar_._._/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://www.facebook.com/ryan.bdr.227911" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://wa.me/+923480989572" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div x-data="{open:false}">
+    <div x-show="open" x-transition class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+      <div @click.outside="open=false" class="bg-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 relative">
+        <button @click="open=false" class="absolute top-3 right-3 text-slate-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="text-xl font-bold">Book Your Spot</h2>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm mb-1">Name</label>
+            <input id="name" type="text" class="w-full px-4 py-2 rounded-md bg-slate-900 border border-slate-700 text-slate-100" required>
+          </div>
+          <div>
+            <label for="email" class="block text-sm mb-1">Email</label>
+            <input id="email" type="email" class="w-full px-4 py-2 rounded-md bg-slate-900 border border-slate-700 text-slate-100" required>
+          </div>
+          <button type="submit" class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-lg hover:scale-[1.02] transition">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

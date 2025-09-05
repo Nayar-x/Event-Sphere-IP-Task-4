@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Event Sphere — Discover Upcoming Events</title>
+  <meta name="description" content="EventSphere — discover and explore upcoming tech, music, and cultural events. Search, filter and learn more." />
+
+  <!-- Favicon / Logo -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.14.2/dist/cdn.min.js"></script>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Theme colors & minimal custom styles -->
+  <style>
+    :root{
+      --accent: #7c3aed; /* indigo-violet */
+      --muted: #6b7280;
+      --glass-bg: rgba(255,255,255,0.06);
+    }
+    html,body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    :focus { outline: 3px solid rgba(124,58,237,0.18); outline-offset: 2px; }
+    #particles-js { 
+      position: absolute; 
+      inset: 0; 
+      z-index: 0; 
+      pointer-events: none; /* ✅ Prevent blocking clicks */
+    }
+    .hero-content { position: relative; z-index: 10; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-slate-100 antialiased">
+
+  <!-- Particles background -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <div class="min-h-screen flex flex-col relative z-10">
+
+    <!-- NAV -->
+    <header class="w-full py-5 px-6 md:px-12 relative z-50">
+      <nav class="max-w-6xl mx-auto flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="flex items-center gap-3" aria-label="EventSphere home">
+          <img src="images/logo.png" alt="EventSphere logo" class="w-10 h-10 rounded-lg object-cover" />
+          <div>
+            <span class="block font-semibold text-lg leading-tight">Event Sphere</span>
+            <span class="block text-xs text-slate-400 -mt-0.5">Discover Upcoming Events</span>
+          </div>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-6 text-sm">
+          <li><a href="index.html" class="text-slate-200 hover:text-white">Home</a></li>
+          <li><a href="upcoming.html" class="text-slate-200 hover:text-white">Upcoming Events</a></li>
+          <li><a href="contact.html" class="text-slate-200 hover:text-white">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-3">
+          <a href="#events" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm bg-[rgba(124,58,237,0.18)] border border-[rgba(124,58,237,0.24)] hover:brightness-105">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Events</span>
+          </a>
+          <button class="p-2 rounded-md bg-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.04)] md:hidden" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="flex-1 relative z-10">
+      <section class="relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 md:px-12 pt-8 pb-16 lg:pb-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="hero-content">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white animate__animated animate__fadeInUp">
+                Discover Upcoming Events<br class="hidden sm:block" /> Near You & Online
+              </h1>
+              <p class="mt-4 text-slate-300 max-w-xl leading-relaxed animate__animated animate__fadeInUp animate__delay-1s">
+                Browse tech summits, concerts, design expos and community meetups. Filter by name, venue or date and RSVP in seconds.
+              </p>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#events" class="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg shadow-lg hover:scale-[1.01] transition">
+                  <i class="fa-solid fa-compass"></i> Browse Events
+                </a>
+                <a href="upcoming.html" class="inline-flex items-center gap-2 px-4 py-3 border border-[rgba(255,255,255,0.06)] rounded-lg text-sm text-slate-200 hover:bg-white/3">
+                  View All
+                </a>
+              </div>
+
+              <!-- Search -->
+              <div x-data @keydown.window.escape="$store.main.query = ''" class="mt-8">
+                <label for="global-search" class="sr-only">Search events</label>
+                <div class="relative">
+                  <input id="global-search" x-model="$store.main.query" type="search"
+                    placeholder="Search events by title, venue, or keyword..."
+                    class="w-full md:w-96 px-4 py-3 rounded-full glass text-slate-100 placeholder:text-slate-400 border border-[rgba(255,255,255,0.04)]" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                </div>
+                <p class="mt-2 text-xs text-slate-400">Tip: press <kbd class="bg-slate-800 px-2 rounded text-xs">Esc</kbd> to clear.</p>
+              </div>
+            </div>
+
+            <!-- Featured card -->
+            <div class="hero-content hidden lg:flex items-center justify-center">
+              <div class="w-full max-w-md glass rounded-2xl p-6 shadow-2xl">
+                <h3 class="text-slate-100 font-semibold">Featured: TechFest 2025</h3>
+                <p class="text-sm text-slate-300 mt-2">Annual technology festival with startups, AI talks, and networking — San Francisco Convention Center — Sep 15, 2025</p>
+                <div class="mt-4 grid grid-cols-3 gap-2">
+                  <img class="rounded-lg object-cover h-24 w-full" src="images/featured1.png" alt="TechFest highlight" />
+                  <img class="rounded-lg object-cover h-24 w-full" src="images/featured2.jpg" alt="Audience" />
+                  <img class="rounded-lg object-cover h-24 w-full" src="images/featured3.jpg" alt="Stage" />
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                  <a href="event-1.html" class="text-sm px-3 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700">Learn More</a>
+                  <span class="text-xs text-slate-400 flex items-center gap-2"><i class="fa-solid fa-clock"></i> Sep 15, 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS GRID -->
+      <section id="events" class="max-w-6xl mx-auto px-6 md:px-12 py-12" x-data="eventsList()" x-init="$store.main = { query: '' }">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold">Upcoming Events</h2>
+          <p class="text-sm text-slate-400">Showing <span x-text="filtered.length"></span> results</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="event in filtered" :key="event.id">
+            <article class="glass rounded-xl p-4 shadow-md hover:shadow-xl transition">
+              <img :src="event.image" :alt="`Image for ${event.title}`" class="h-40 w-full object-cover rounded-lg" />
+              <div class="mt-3">
+                <h3 class="text-lg font-semibold" x-text="event.title"></h3>
+                <p class="text-sm text-slate-400 mt-1" x-text="event.venue + ' • ' + event.date"></p>
+                <p class="mt-3 text-sm text-slate-300" x-text="event.excerpt"></p>
+                <div class="mt-4 flex items-center justify-between">
+                  <a :href="event.link" class="inline-flex items-center gap-2 text-sm px-3 py-2 rounded-md bg-[rgba(124,58,237,0.16)] border border-[rgba(124,58,237,0.2)] hover:bg-[rgba(124,58,237,0.18)]">
+                    Learn More <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <span class="text-xs text-slate-400 flex items-center gap-2"><i class="fa-solid fa-ticket"></i> RSVP</span>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+        <div x-show="filtered.length === 0" class="mt-8 text-center text-slate-400">
+          No events matched your search. Try different keywords.
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-t-[rgba(255,255,255,0.03)] mt-auto relative z-10">
+      <div class="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-slate-400">© <span id="year"></span> Event Sphere ... All rights reserved</div>
+        <div class="flex items-center gap-3">
+          <a class="text-slate-300 hover:text-white" href="https://www.snapchat.com/nayar-900" target="_blank" rel="noopener"><i class="fa-brands fa-snapchat"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://www.instagram.com/_._._nayar_._._/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://www.facebook.com/ryan.bdr.227911" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+          <a class="text-slate-300 hover:text-white" href="https://wa.me/+923480989572" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('main', { query: '' });
+      Alpine.data('eventsList', () => ({
+        events: [
+          { id: 1, title: 'TechFest 2025', date: 'Sep 15, 2025 • 10:00 AM', venue: 'San Francisco Convention Center', excerpt: 'Annual technology festival with startups, AI talks, and networking opportunities.', image: 'images/event-1.jpg', link: 'event-1.html' },
+          { id: 2, title: 'Music Vibes Night', date: 'Sep 25, 2025 • 8:00 PM', venue: 'Madison Square Garden, New York', excerpt: 'A live concert night with global artists and DJs.', image: 'images/event-2.jpg', link: 'event-2.html' },
+          { id: 3, title: 'Art & Design Expo', date: 'Oct 03, 2025 • 11:00 AM', venue: 'Brooklyn Art Center', excerpt: 'Showcasing modern art and interactive design installations.', image: 'images/event-3.jpg', link: 'event-3.html' },
+          { id: 4, title: 'Startup Pitch Day', date: 'Oct 12, 2025 • 1:00 PM', venue: 'Silicon Alley Hub', excerpt: 'Early-stage founders pitch to investors and mentors.', image: 'images/event-4.jpg', link: 'event-4.html' },
+          { id: 5, title: 'Health & Wellness Retreat', date: 'Nov 01, 2025 • 9:00 AM', venue: 'Green Valley Resort', excerpt: 'A day of mindfulness, workshops and wellness talks.', image: 'images/event-5.jpg', link: 'event-5.html' },
+          { id: 6, title: 'Coding Hackathon', date: 'Nov 18, 2025 • 9:00 AM', venue: 'Downtown Tech Lab', excerpt: '24-hour collaborative hackathon — build, prototype and present.', image: 'images/event-6.jpg', link: 'event-6.html' }
+        ],
+        get filtered() {
+          const q = (Alpine.store('main').query || '').trim().toLowerCase();
+          if (!q) return this.events;
+          return this.events.filter(e => [e.title, e.excerpt, e.venue, e.date].join(' ').toLowerCase().includes(q));
+        }
+      }));
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      particlesJS('particles-js', {
+        "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 900 } }, "color": { "value": ["#7c3aed", "#06b6d4", "#fff"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.12 }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 160, "color": "#7c3aed", "opacity": 0.08, "width": 1 }, "move": { "enable": true, "speed": 1.2, "out_mode": "out" } },
+        "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.12 } } } },
+        "retina_detect": true
+      });
+    });
+  </script>
+</body>
+</html>
