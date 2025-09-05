@@ -67,7 +67,7 @@ It is built using **HTML, TailwindCSS, Alpine.js, and Particles.js** for a light
 
 ## Live Demo
 
-*(Add the Netlify / GitHub Pages link here once deployed)*
+[Link](https://nayar-x.github.io/Event-Sphere-IP-Task-4/)
 
 ---
 
