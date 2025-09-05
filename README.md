@@ -41,7 +41,11 @@ It is built using **HTML, TailwindCSS, Alpine.js, and Particles.js** for a light
 ---
 
 ## Screenshots
-*(Add screenshots here once hosted, e.g. hero section, events grid, contact form, etc.)*
+<img width="1884" height="842" alt="image" src="https://github.com/user-attachments/assets/e9078c56-2398-467f-9992-47dfb20b63ab" />
+<img width="1887" height="719" alt="image" src="https://github.com/user-attachments/assets/f0a1999b-0de3-4ab8-b068-a917da7eecb0" />
+<img width="1831" height="705" alt="image" src="https://github.com/user-attachments/assets/09a43d47-1236-4133-bd61-826d9b7b0fa3" />
+<img width="1886" height="860" alt="image" src="https://github.com/user-attachments/assets/758ee622-139f-4899-9fda-098b848bd347" />
+
 
 ---
 
@@ -67,7 +71,7 @@ It is built using **HTML, TailwindCSS, Alpine.js, and Particles.js** for a light
 
 ## Live Demo
 
-[Link](https://nayar-x.github.io/Event-Sphere-IP-Task-4/)
+[Page Link](https://nayar-x.github.io/Event-Sphere-IP-Task-4/)
 
 ---
 
